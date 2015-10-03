@@ -115,7 +115,7 @@ full
 { "command": "log_level", "severity": "warning" }
 ```
 
-Change <userpath> to the correct location.  When install is complete start Divvy by executing divvyd
+Change userpath to the correct location.  When install is complete start Divvy by executing divvyd and wait for ledger to sync.
 
 In the instance a connection to the network does not happen automatically, execute:
 
