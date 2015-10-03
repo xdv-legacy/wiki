@@ -11,16 +11,18 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 40 --slave 
 sudo update-alternatives --config gcc
 wget https://download.libsodium.org/libsodium/releases/LATEST.tar.gz
 tar xzf LATEST.tar.gz
-cd libsodium-0.6.1/
+cd libsodium*
 ./configure
 make && make check && sudo make install
 cd ..
 sudo apt-get purge -f boost*
-sudo apt-get install python-software-properties
- echo "deb [arch=amd64] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | sudo tee /etc/apt/sources.list.d/ripple.list 
- wget -O- -q http://mirrors.ripple.com/mirrors.ripple.com.gpg.key | sudo apt-key add -
- sudo apt-get update
- sudo apt-get install boost-all-dev
+wget http://downloads.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.tar.bz2
+tar xvjf ./boost_1_57_0.tar.bz2
+cd boost_1_57_0
+./bootstrap.sh --prefix=/opt/boost_1_57_0
+sudo ./b2
+sudo ./b2 install
+cd ..
 git clone https://github.com/xdv/divvyd.git
 cd divvyd/
 scons
