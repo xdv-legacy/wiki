@@ -16,12 +16,10 @@ cd libsodium*
 make && make check && sudo make install
 cd ..
 sudo apt-get purge -f boost*
-wget http://downloads.sourceforge.net/project/boost/boost/1.57.0/boost_1_57_0.tar.bz2
-tar xvjf ./boost_1_57_0.tar.bz2
-cd boost_1_57_0
-./bootstrap.sh --prefix=/opt/boost_1_57_0
-sudo ./b2
-sudo ./b2 install
+echo "deb [arch=amd64] http://mirrors.ripple.com/ubuntu/ trusty stable contrib" | sudo tee /etc/apt/sources.list.d/ripple.list 
+wget -O- -q http://mirrors.ripple.com/mirrors.ripple.com.gpg.key | sudo apt-key add -
+sudo apt-get update
+sudo apt-get install boost-all-dev
 cd ..
 git clone https://github.com/xdv/divvyd.git
 cd divvyd/
